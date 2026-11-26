@@ -58,7 +58,7 @@
   .menu-btn span:nth-child(1){top:0}.menu-btn span:nth-child(2){top:8px}.menu-btn span:nth-child(3){top:16px}
 
   /* Hero */
-  .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:140px 0 100px}
+  .hero{min-height:86vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 0 64px}
   .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.65;z-index:0;animation:drift 18s ease-in-out infinite alternate}
   .b1{width:520px;height:520px;background:#a9c9ef;top:-120px;right:-80px}
   .b2{width:420px;height:420px;background:#a7dcc9;bottom:-120px;right:22%;animation-duration:22s;animation-delay:-6s}
@@ -84,7 +84,7 @@
   .btn.solid span{position:relative}
   .btn.ghost{border:1px solid var(--ink-soft);background:rgba(255,255,255,.5)}
   .btn.ghost:hover{background:#fff;transform:translateY(-2px)}
-  .hero-meta{display:flex;gap:56px;margin-top:72px;padding-top:30px;border-top:1px solid var(--line);max-width:640px;flex-wrap:wrap}
+  .hero-meta{display:flex;gap:56px;margin-top:48px;padding-top:26px;border-top:1px solid var(--line);max-width:640px;flex-wrap:wrap}
   .hero-meta div{font-size:13px;color:var(--muted)}
   .hero-meta strong{display:block;font-family:var(--serif);font-size:38px;font-weight:400;color:var(--ink);line-height:1.1}
 
@@ -96,8 +96,8 @@
   .stack li{font-size:13.5px;padding:7px 16px;border-radius:99px;background:var(--paper);border:1px solid var(--line);color:var(--ink-soft)}
 
   /* Sections */
-  section{padding:130px 0;position:relative;z-index:1}
-  .sec-head{display:grid;grid-template-columns:220px 1fr;gap:48px;margin-bottom:72px;align-items:baseline}
+  section{padding:88px 0;position:relative;z-index:1}
+  .sec-head{display:grid;grid-template-columns:220px 1fr;gap:48px;margin-bottom:44px;align-items:baseline}
   .sec-num{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--blue-deep);font-weight:500}
   h2{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4vw,48px);line-height:1.08;letter-spacing:-.02em}
   h2 em{font-style:italic}
@@ -107,20 +107,31 @@
   .about-grid{display:grid;grid-template-columns:220px 1fr;gap:48px}
   .about-body .big{font-family:var(--serif);font-size:clamp(22px,2.2vw,27px);line-height:1.45;font-weight:300}
   .about-body .small{font-size:16.5px;line-height:1.85;color:var(--ink-soft);margin-top:28px;font-weight:300;max-width:700px}
-  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
   .facts div{padding:22px 24px;background:var(--card);border:1px solid var(--line);border-radius:16px}
   .facts dt{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
   .facts dd{font-size:15.5px}
 
   /* Experience */
   .job{display:grid;grid-template-columns:220px 1fr;gap:48px}
+  .job > div{min-width:0}
   .job-side .period{font-size:13px;color:var(--muted)}
   .job-side .now{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:12px;padding:5px 12px;border-radius:99px;background:rgba(146,209,189,.35);color:var(--mint-deep);font-weight:500}
   .job h3{font-family:var(--serif);font-size:32px;font-weight:300;line-height:1.1}
   .company{display:inline-flex;align-items:center;gap:12px;margin:16px 0 36px;padding:8px 24px 8px 8px;border-radius:99px;background:#fff;border:1px solid var(--line);box-shadow:0 12px 30px -18px rgba(62,111,168,.55)}
   .company b{width:36px;height:36px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-family:var(--serif);font-size:18px;font-weight:500}
   .company span{font-family:var(--serif);font-size:24px;font-weight:500;color:var(--blue-deep)}
-  .impact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .rail{--n:2;--gap:18px;display:flex;gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 2px 14px;margin:-6px -2px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .rail::-webkit-scrollbar{display:none}
+  .rail > *{flex:0 0 calc((100% - (var(--n) - 1) * var(--gap)) / var(--n));scroll-snap-align:start}
+  .rail-nav{display:flex;align-items:center;justify-content:flex-end;gap:14px;margin-top:14px}
+  .rail-nav[hidden]{display:none}
+  .rail-nav .pos{font-size:12.5px;letter-spacing:.14em;color:var(--muted);min-width:52px;text-align:center}
+  .rail-nav button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:16px;cursor:pointer;transition:background .3s,border-color .3s,opacity .3s}
+  .rail-nav button:hover:not(:disabled){background:var(--grad);border-color:transparent}
+  .rail-nav button:disabled{opacity:.35;cursor:default}
+  .dark .rail-nav button{background:transparent;color:#eaf1f7;border-color:rgba(255,255,255,.2)}
+  .impact{--n:2}
   .impact article{background:var(--card);padding:30px 28px;border-radius:20px;border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .4s,box-shadow .4s,opacity 1s,translate 1s}
   .impact article::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .6s}
   .impact article:hover{box-shadow:0 24px 48px -28px rgba(20,35,58,.35)}
@@ -129,11 +140,11 @@
   .impact h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
   .impact .stat{font-family:var(--serif);font-size:38px;line-height:1;font-weight:400}
   .impact p{font-size:15px;color:var(--ink-soft);font-weight:300}
-  .impact article.wide{grid-column:1/-1;background:linear-gradient(135deg,#fff 0%,#eef5fd 60%,#e9f7f2 100%)}
+  .impact article.wide{background:linear-gradient(135deg,#fff 0%,#eef5fd 60%,#e9f7f2 100%)}
   .impact article.wide .stat{font-size:48px}
 
   /* Projects */
-  .projects{display:grid;grid-template-columns:1fr 1fr;gap:28px;perspective:1200px}
+  .projects{--n:2;--gap:24px;perspective:1200px}
   .proj{border:1px solid var(--line);padding:44px 40px;background:var(--card);border-radius:24px;position:relative;overflow:hidden;transition:transform .2s ease-out,box-shadow .4s,opacity 1s}
   .proj:hover{box-shadow:0 30px 60px -30px rgba(20,35,58,.4)}
   .proj .shine{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(143,184,232,.28),transparent 45%)}
@@ -161,12 +172,12 @@
   .skill li:last-child{border:0}
 
   /* Recognition */
-  .awards{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .awards{--n:3}
   .award{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:40px}
   .award .yr{font-family:var(--serif);font-size:52px;line-height:1;font-weight:300}
   .award h3{font-family:var(--serif);font-size:24px;font-weight:400;margin:14px 0 12px;line-height:1.15}
   .award p{color:var(--ink-soft);font-weight:300;font-size:15.5px}
-  .edu{margin-top:28px;display:grid;grid-template-columns:200px 1fr auto;gap:40px;align-items:center;padding:36px 40px;border-radius:24px;background:linear-gradient(120deg,#e8f1fb,#e6f5ef);border:1px solid var(--line)}
+  .edu{margin-top:22px;display:grid;grid-template-columns:200px 1fr auto;gap:40px;align-items:center;padding:36px 40px;border-radius:24px;background:linear-gradient(120deg,#e8f1fb,#e6f5ef);border:1px solid var(--line)}
   .edu h3{font-family:var(--serif);font-size:26px;font-weight:400;line-height:1.15}
   .edu .school{color:var(--ink-soft);font-weight:300}
   .edu .gpa{text-align:right}
@@ -177,7 +188,7 @@
   .interests span{padding:6px 16px;border-radius:99px;background:#fff;border:1px solid var(--line)}
 
   /* Contact */
-  .contact{text-align:center;padding:150px 0}
+  .contact{text-align:center;padding:100px 0}
   .contact .sec-num{display:block;margin-bottom:28px}
   .contact h2{font-size:clamp(38px,5vw,64px);max-width:760px;margin:0 auto;position:relative}
   .mail{display:inline-flex;align-items:center;gap:14px;margin-top:48px;font-family:var(--serif);font-size:clamp(18px,2.6vw,28px);font-style:italic;font-weight:300;padding:18px 34px;border-radius:99px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);transition:background .35s,color .35s,border-color .35s,opacity 1s,transform 1s;position:relative;word-break:break-all}
@@ -202,12 +213,12 @@
   @media (max-width:960px){
     .sec-head,.about-grid,.job,.edu{grid-template-columns:1fr;gap:18px}
     .skills{grid-template-columns:1fr 1fr}
-    .projects,.awards{grid-template-columns:1fr}
+    .awards{--n:2}
     .edu .gpa{text-align:left}
   }
   @media (max-width:720px){
     .wrap{padding:0 22px}
-    section{padding:96px 0}
+    section{padding:64px 0}
     .menu-btn{display:block}
     .links{position:fixed;inset:0;height:100vh;background:var(--paper);flex-direction:column;align-items:center;justify-content:center;gap:34px;opacity:0;pointer-events:none;transition:opacity .35s}
     .links a{font-size:15px}
@@ -215,7 +226,11 @@
     body.open .menu-btn span:nth-child(1){top:8px;transform:rotate(45deg)}
     body.open .menu-btn span:nth-child(2){opacity:0}
     body.open .menu-btn span:nth-child(3){top:8px;transform:rotate(-45deg)}
-    .impact,.skills,.facts{grid-template-columns:1fr}
+    .facts{grid-template-columns:1fr}
+    .skills{grid-template-columns:1fr 1fr;gap:12px}
+    .skill{padding:24px 20px}
+    .rail{--n:1}
+    .rail > *{flex-basis:86%}
     .proj,.award{padding:32px 24px}
     .edu{padding:28px 24px}
     .hero-meta{gap:28px}
@@ -301,28 +316,29 @@
       <div>
         <h3 class="reveal">Full Stack Engineer</h3>
         <div class="company reveal"><b>A</b><span>Arcadia</span></div>
-        <div class="impact">
-          <article class="wide reveal">
+        <div class="impact rail reveal" data-rail>
+          <article class="wide">
             <div class="k"><h4>AI &amp; Feature Innovation</h4><span class="stat grad-dark">−40%</span></div>
             <p>Spearheaded the integration of a <span class="hl">localised LLM-driven assistant via the Model Context Protocol</span>, enabling data analysts to query complex billing datasets in natural language and <span class="hl blue">cutting reporting turnaround by 40%</span>.</p>
           </article>
-          <article class="reveal">
+          <article>
             <div class="k"><h4>Frontend Development</h4><span class="stat grad-dark">+30%</span></div>
             <p>Designed and engineered an <span class="hl blue">Angular analytical dashboard</span>, optimising data-visualisation workflows and lifting user operation efficiency by 30%.</p>
           </article>
-          <article class="reveal">
+          <article>
             <div class="k"><h4>UI / UX Optimisation</h4><span class="stat grad-dark">−25%</span></div>
             <p>Overhauled core interfaces around user-centric design principles, <span class="hl">reducing overall data analysis time by 25%</span>.</p>
           </article>
-          <article class="reveal">
+          <article>
             <div class="k"><h4>Backend Engineering</h4><span class="stat grad-dark">99.9%</span></div>
             <p>Scaled robust <span class="hl blue">Java and Spring Boot microservices</span> that process and deliver large-scale, high-volume utility billing data with 99.9% accuracy.</p>
           </article>
-          <article class="reveal">
+          <article>
             <div class="k"><h4>Quality Assurance</h4><span class="stat grad-dark">E2E</span></div>
             <p>Implemented <span class="hl">end-to-end Selenium automation suites</span>, minimising manual regression cycles and strengthening production deployment reliability.</p>
           </article>
         </div>
+<div class="rail-nav"><button type="button" class="prev" aria-label="Previous">←</button><span class="pos"></span><button type="button" class="next" aria-label="Next">→</button></div>
       </div>
     </div>
   </div>
@@ -334,8 +350,8 @@
       <p class="sec-num reveal">03 — Selected Work</p>
       <h2 class="reveal">Projects I've <em class="grad-dark">built</em></h2>
     </div>
-    <div class="projects">
-      <article class="proj tilt reveal">
+    <div class="projects rail reveal" data-rail>
+      <article class="proj tilt">
         <div class="shine"></div>
         <span class="idx">Project 01 · AI</span>
         <h3>NoteSync AI</h3>
@@ -348,7 +364,7 @@
         </ul>
         <div class="tags"><span>React</span><span>Spring Boot</span><span>MongoDB</span><span>MCP</span></div>
       </article>
-      <article class="proj tilt reveal">
+      <article class="proj tilt">
         <div class="shine"></div>
         <span class="idx">Project 02 · Web</span>
         <h3>Smart Event Planner</h3>
@@ -362,6 +378,7 @@
         <div class="tags"><span>React</span><span>Spring</span><span>MongoDB</span></div>
       </article>
     </div>
+<div class="rail-nav"><button type="button" class="prev" aria-label="Previous">←</button><span class="pos"></span><button type="button" class="next" aria-label="Next">→</button></div>
   </div>
 </section>
 
@@ -386,28 +403,29 @@
       <p class="sec-num reveal">05 — Recognition</p>
       <h2 class="reveal">Awards &amp; <em class="grad-dark">education</em></h2>
     </div>
-    <div class="awards">
-      <div class="award reveal">
+    <div class="awards rail reveal" data-rail>
+      <div class="award">
         <span class="yr grad-dark">2020</span>
         <h3>Smart India Hackathon — Finalist</h3>
         <p>Created a <span class="hl">women-empowerment app</span> offering resources and support for women. The project sparked my journey into full stack development.</p>
       </div>
-      <div class="award reveal">
+      <div class="award">
         <span class="yr grad-dark">2022</span>
         <h3>Vishwakarma Awards — Finalist</h3>
         <p>Reached the <span class="hl blue">national finals</span> with a prototype that connects local farmers directly with nearby consumers, removing the need for intermediaries.</p>
       </div>
-      <div class="award reveal">
+      <div class="award">
         <span class="yr grad-dark">2023</span>
         <h3>Best Find of the Year</h3>
         <p>Recognised by <span class="arcadia">Arcadia</span> as the <span class="hl">standout hire among all engineering graduates</span> who joined the company that year, for the impact and initiative shown from day one.</p>
       </div>
-      <div class="award reveal">
+      <div class="award">
         <span class="yr grad-dark">2025</span>
         <h3>Employee of the Year</h3>
         <p>Honoured as <span class="hl">Employee of the Year across the engineering team</span> at <span class="arcadia">Arcadia</span>, celebrating consistent ownership, delivery and contribution to the team's success.</p>
       </div>
     </div>
+<div class="rail-nav"><button type="button" class="prev" aria-label="Previous">←</button><span class="pos"></span><button type="button" class="next" aria-label="Next">→</button></div>
     <div class="edu reveal">
       <p class="sec-num">2018 — 2022</p>
       <div>
@@ -492,6 +510,25 @@
       requestAnimationFrame(() => requestAnimationFrame(() => rot.classList.remove('pre')));
     }, 450);
   }, 2600);
+
+  // Side-scrolling rails
+  document.querySelectorAll('[data-rail]').forEach(rail => {
+    const nav = rail.nextElementSibling, prev = nav.querySelector('.prev'), next = nav.querySelector('.next'), pos = nav.querySelector('.pos');
+    const items = [...rail.children];
+    const step = () => items[0].getBoundingClientRect().width + parseFloat(getComputedStyle(rail).columnGap || 18);
+    const update = () => {
+      const max = rail.scrollWidth - rail.clientWidth;
+      nav.hidden = max < 4;
+      const visible = Math.max(1, Math.round(rail.clientWidth / step()));
+      const first = Math.round(rail.scrollLeft / step());
+      prev.disabled = rail.scrollLeft < 4; next.disabled = rail.scrollLeft > max - 4;
+      pos.textContent = `${String(Math.min(first + visible, items.length)).padStart(2,'0')} / ${String(items.length).padStart(2,'0')}`;
+    };
+    prev.addEventListener('click', () => rail.scrollBy({left: -step()}));
+    next.addEventListener('click', () => rail.scrollBy({left: step()}));
+    rail.addEventListener('scroll', () => requestAnimationFrame(update), {passive:true});
+    addEventListener('resize', update); update();
+  });
 
   // 3D tilt + shine on project cards
   if (!reduce && matchMedia('(hover:hover)').matches) {
