@@ -87,9 +87,6 @@
   .hero-meta{display:flex;gap:56px;margin-top:72px;padding-top:30px;border-top:1px solid var(--line);max-width:640px;flex-wrap:wrap}
   .hero-meta div{font-size:13px;color:var(--muted)}
   .hero-meta strong{display:block;font-family:var(--serif);font-size:38px;font-weight:400;color:var(--ink);line-height:1.1}
-  .scroll-cue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:2;width:24px;height:38px;border:1.5px solid var(--muted);border-radius:14px}
-  .scroll-cue::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:var(--blue-deep);transform:translateX(-50%);animation:cue 1.8s infinite}
-  @keyframes cue{0%{opacity:1;top:7px}100%{opacity:0;top:20px}}
 
   /* Stack strip */
   .stack{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;padding:26px 0;position:relative;z-index:1}
@@ -197,7 +194,6 @@
   .impact article.reveal.in:hover,.skill.reveal.in:hover{transform:translateY(-4px)}
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none}
-    .blob,.status .dot,.scroll-cue::after{animation:none}
     html{scroll-behavior:auto}
   }
 
@@ -223,7 +219,6 @@
     .edu{padding:28px 24px}
     .hero-meta{gap:28px}
     .hero-meta strong{font-size:34px}
-    .scroll-cue{display:none}
     .blob{filter:blur(50px)}
     .b1{width:320px;height:320px}
     .mail{padding:16px 22px}
@@ -266,7 +261,6 @@
       <div><strong><span class="count" data-to="99.9" data-dec="1">99.9</span>%</strong>Billing data accuracy</div>
     </div>
   </div>
-  <a href="#about" class="scroll-cue" aria-label="Scroll down"></a>
 </header>
 
 <div class="stack">
