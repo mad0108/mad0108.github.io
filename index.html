@@ -75,7 +75,20 @@
   .rotator span.out{opacity:0;transform:translateY(-30%);filter:blur(6px)}
   .rotator span.pre{opacity:0;transform:translateY(30%);filter:blur(6px);transition:none}
   .lede{max-width:600px;margin-top:24px;font-size:17px;color:var(--ink-soft);font-weight:300}
-  .cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+  .index{display:grid;grid-template-columns:repeat(6,1fr);margin-top:32px;max-width:760px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden;box-shadow:0 18px 40px -30px rgba(20,35,58,.45)}
+  .index a{position:relative;display:flex;flex-direction:column;gap:2px;padding:14px 16px 13px;border-left:1px solid var(--line);transition:background .35s}
+  .index a:first-child{border-left:0}
+  .index i{font-style:normal;font-size:11px;letter-spacing:.14em;color:var(--blue-deep);font-weight:500}
+  .index span{font-size:14px;color:var(--ink);font-weight:500}
+  .index b{position:absolute;right:14px;bottom:13px;font-weight:400;font-size:14px;color:var(--ink);opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s}
+  .index a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+  .index a:hover{background:rgba(255,255,255,.9)}
+  .index a:hover::after{transform:scaleX(1)}
+  .index a:hover b{opacity:1;transform:none}
+  .index a.accent{background:var(--ink)}
+  .index a.accent i{color:var(--mint)}
+  .index a.accent span,.index a.accent b{color:#fff}
+  .index a.accent:hover{background:#1f3352}
   .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;border-radius:99px;transition:transform .3s,box-shadow .3s,background .3s,color .3s;position:relative;overflow:hidden}
   .btn.solid{background:var(--ink);color:#fff;box-shadow:0 10px 30px -12px rgba(20,35,58,.6)}
   .btn.solid::before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .35s}
@@ -234,6 +247,9 @@
     .proj,.award{padding:32px 24px}
     .edu{padding:28px 24px}
     .hero-meta{gap:28px}
+    .index{grid-template-columns:repeat(3,1fr)}
+    .index a:nth-child(4){border-left:0}
+    .index a:nth-child(n+4){border-top:1px solid var(--line)}
     .hero-meta strong{font-size:34px}
     .blob{filter:blur(50px)}
     .b1{width:320px;height:320px}
@@ -253,8 +269,9 @@
     <ul class="links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#work">Work</a></li>
+      <li><a href="#work">Projects</a></li>
       <li><a href="#skills">Expertise</a></li>
+      <li><a href="#recognition">Awards</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -267,9 +284,13 @@
     <div class="status reveal"><span class="dot"></span>Full Stack Engineer at <span class="arcadia">Arcadia</span> · Chennai</div>
     <h1 class="reveal">Madhumita M<br>builds <span class="rotator" id="rotator"><span>thoughtful</span></span><br>software.</h1>
     <p class="lede reveal">I design and engineer scalable web applications across <span class="hl blue">Java, Spring Boot and React / Angular</span>, and bring AI into everyday workflows through <span class="hl">LLM orchestration and the Model Context Protocol</span>.</p>
-    <div class="cta reveal">
-      <a href="#work" class="btn solid"><span>View selected work →</span></a>
-      <a href="mailto:madhumitamanivannane@gmail.com" class="btn ghost">Get in touch</a>
+    <div class="index reveal" role="navigation" aria-label="Sections">
+      <a href="#about"><i>01</i><span>About</span><b>→</b></a>
+      <a href="#experience"><i>02</i><span>Experience</span><b>→</b></a>
+      <a href="#work"><i>03</i><span>Projects</span><b>→</b></a>
+      <a href="#skills"><i>04</i><span>Expertise</span><b>→</b></a>
+      <a href="#recognition"><i>05</i><span>Awards</span><b>→</b></a>
+      <a href="#contact" class="accent"><i>06</i><span>Contact</span><b>→</b></a>
     </div>
     <div class="hero-meta reveal">
       <div><strong><span class="count" data-to="4">4</span>+</strong>Years of experience</div>
@@ -347,7 +368,7 @@
 <section id="work">
   <div class="wrap">
     <div class="sec-head">
-      <p class="sec-num reveal">03 — Selected Work</p>
+      <p class="sec-num reveal">03 — Projects</p>
       <h2 class="reveal">Projects I've <em class="grad-dark">built</em></h2>
     </div>
     <div class="projects rail reveal" data-rail>
