@@ -75,20 +75,25 @@
   .rotator span.out{opacity:0;transform:translateY(-30%);filter:blur(6px)}
   .rotator span.pre{opacity:0;transform:translateY(30%);filter:blur(6px);transition:none}
   .lede{max-width:600px;margin-top:24px;font-size:17px;color:var(--ink-soft);font-weight:300}
-  .index{display:grid;grid-template-columns:repeat(6,1fr);margin-top:32px;max-width:760px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden;box-shadow:0 18px 40px -30px rgba(20,35,58,.45)}
-  .index a{position:relative;display:flex;flex-direction:column;gap:2px;padding:14px 16px 13px;border-left:1px solid var(--line);transition:background .35s}
-  .index a:first-child{border-left:0}
-  .index i{font-style:normal;font-size:11px;letter-spacing:.14em;color:var(--blue-deep);font-weight:500}
-  .index span{font-size:14px;color:var(--ink);font-weight:500}
-  .index b{position:absolute;right:14px;bottom:13px;font-weight:400;font-size:14px;color:var(--ink);opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s}
-  .index a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s}
-  .index a:hover{background:rgba(255,255,255,.9)}
-  .index a:hover::after{transform:scaleX(1)}
-  .index a:hover b{opacity:1;transform:none}
-  .index a.accent{background:var(--ink)}
-  .index a.accent i{color:var(--mint)}
-  .index a.accent span,.index a.accent b{color:#fff}
-  .index a.accent:hover{background:#1f3352}
+  /* Journey line navigation */
+  .journey{position:relative;display:flex;margin-top:36px;max-width:720px;padding-top:2px}
+  .journey::before{content:"";position:absolute;left:8px;width:calc(500% / 6);top:9px;height:2px;border-radius:2px;background:linear-gradient(90deg,#8fb8e8,#92d1bd);transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.2,.7,.2,1) .2s}
+  .journey.in::before{transform:scaleX(1)}
+  .journey a{position:relative;flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding-bottom:4px}
+  .journey .dot{position:relative;z-index:1;width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--blue);transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .35s,background .35s,border-color .35s,box-shadow .35s;opacity:0;transform:scale(.4)}
+  .journey.in .dot{opacity:1;transform:none}
+  .journey a:nth-child(2) .dot{transition-delay:.35s}.journey a:nth-child(3) .dot{transition-delay:.5s}.journey a:nth-child(4) .dot{transition-delay:.65s}.journey a:nth-child(5) .dot{transition-delay:.8s}.journey a:nth-child(6) .dot{transition-delay:.95s}
+  .journey.in a:hover .dot{transition-delay:0s;transform:scale(1.35);background:var(--grad);border-color:transparent;box-shadow:0 0 0 6px rgba(143,184,232,.25)}
+  .journey .lbl{display:flex;flex-direction:column;line-height:1.25;transition:transform .35s}
+  .journey .lbl i{font-style:normal;font-size:10.5px;letter-spacing:.16em;color:var(--muted)}
+  .journey .lbl span{font-size:14px;font-weight:500;color:var(--ink-soft);transition:color .3s}
+  .journey a:hover .lbl{transform:translateY(2px)}
+  .journey a:hover .lbl span{color:var(--blue-deep)}
+  .journey a.end .dot{background:var(--ink);border-color:var(--ink);animation:ring 2.4s infinite 2s}
+  .journey a.end .lbl span{color:var(--ink);font-weight:600}
+  .journey a.end .lbl span::after{content:"→";display:inline-block;margin-left:6px;transition:transform .3s}
+  .journey a.end:hover .lbl span::after{transform:translateX(4px)}
+  @keyframes ring{0%{box-shadow:0 0 0 0 rgba(20,35,58,.35)}70%{box-shadow:0 0 0 10px rgba(20,35,58,0)}100%{box-shadow:0 0 0 0 rgba(20,35,58,0)}}
   .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;border-radius:99px;transition:transform .3s,box-shadow .3s,background .3s,color .3s;position:relative;overflow:hidden}
   .btn.solid{background:var(--ink);color:#fff;box-shadow:0 10px 30px -12px rgba(20,35,58,.6)}
   .btn.solid::before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .35s}
@@ -247,9 +252,11 @@
     .proj,.award{padding:32px 24px}
     .edu{padding:28px 24px}
     .hero-meta{gap:28px}
-    .index{grid-template-columns:repeat(3,1fr)}
-    .index a:nth-child(4){border-left:0}
-    .index a:nth-child(n+4){border-top:1px solid var(--line)}
+    .journey{overflow-x:auto;scrollbar-width:none;margin-right:-22px;padding-right:22px}
+    .journey::-webkit-scrollbar{display:none}
+    .journey a{flex:0 0 92px}
+    .journey::before{width:calc(92px * 5)}
+    .journey{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}
     .hero-meta strong{font-size:34px}
     .blob{filter:blur(50px)}
     .b1{width:320px;height:320px}
@@ -284,13 +291,13 @@
     <div class="status reveal"><span class="dot"></span>Full Stack Engineer at <span class="arcadia">Arcadia</span> · Chennai</div>
     <h1 class="reveal">Madhumita M<br>builds <span class="rotator" id="rotator"><span>thoughtful</span></span><br>software.</h1>
     <p class="lede reveal">I design and engineer scalable web applications across <span class="hl blue">Java, Spring Boot and React / Angular</span>, and bring AI into everyday workflows through <span class="hl">LLM orchestration and the Model Context Protocol</span>.</p>
-    <div class="index reveal" role="navigation" aria-label="Sections">
-      <a href="#about"><i>01</i><span>About</span><b>→</b></a>
-      <a href="#experience"><i>02</i><span>Experience</span><b>→</b></a>
-      <a href="#work"><i>03</i><span>Projects</span><b>→</b></a>
-      <a href="#skills"><i>04</i><span>Expertise</span><b>→</b></a>
-      <a href="#recognition"><i>05</i><span>Awards</span><b>→</b></a>
-      <a href="#contact" class="accent"><i>06</i><span>Contact</span><b>→</b></a>
+    <div class="journey reveal" role="navigation" aria-label="Sections">
+      <a href="#about"><span class="dot"></span><span class="lbl"><i>01</i><span>About</span></span></a>
+      <a href="#experience"><span class="dot"></span><span class="lbl"><i>02</i><span>Experience</span></span></a>
+      <a href="#work"><span class="dot"></span><span class="lbl"><i>03</i><span>Projects</span></span></a>
+      <a href="#skills"><span class="dot"></span><span class="lbl"><i>04</i><span>Expertise</span></span></a>
+      <a href="#recognition"><span class="dot"></span><span class="lbl"><i>05</i><span>Awards</span></span></a>
+      <a href="#contact" class="end"><span class="dot"></span><span class="lbl"><i>06</i><span>Contact</span></span></a>
     </div>
     <div class="hero-meta reveal">
       <div><strong><span class="count" data-to="4">4</span>+</strong>Years of experience</div>
@@ -316,7 +323,7 @@
       <dl class="facts reveal">
         <div><dt>Based in</dt><dd>Chennai, Tamil Nadu</dd></div>
         <div><dt>Currently</dt><dd>Full Stack Engineer, <span class="arcadia">Arcadia</span></dd></div>
-        <div><dt>Focus</dt><dd>Java · React · Applied AI</dd></div>
+        <div><dt>Focus</dt><dd>Java · Angular · React · Applied AI</dd></div>
       </dl>
     </div>
   </div>
